@@ -1,11 +1,15 @@
-import { EventProps } from "@/types/index.types";
+// import { EventProps } from "@/types/index.types"; using prisma types
+import { Event } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const EventCard = ({ event }: { event: EventProps }) => {
+const EventCard = ({ event }: { event: Event }) => {
   return (
-    <Link href={`/event/${event.slug}`} className="h-[380px] flex-1 max-w-[500px] basis-80">
+    <Link
+      href={`/event/${event.slug}`}
+      className="h-[380px] flex-1 max-w-[500px] basis-80"
+    >
       <div
         key={event.id}
         className=" flex flex-col items-center relative h-full w-full bg-white/[3%] rounded-md overflow-hidden hover:scale-105 active:scale-[1.02] transition-transform duration-300 ease-in-out"

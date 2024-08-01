@@ -1,4 +1,4 @@
-export type EventProps = {
+export type EventProps = { //NOTE: you can use prisma types only
   id: number;
   name: string;
   slug: string;

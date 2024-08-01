@@ -2,17 +2,31 @@ import { EventProps } from "@/types/index.types";
 import React from "react";
 import EventCard from "./event-card";
 import { generateEvents, sleep } from "@/lib/utils";
+import PaginationControls from "./pagination-controls";
 
-const EventsList = async ({ city }: { city: string }) => {
-  await sleep(2000);
-  const events = await generateEvents(city);
-  console.log(events);
+const EventsList = async ({
+  city,
+  page = 1,
+}: {
+  city: string;
+  page: number;
+}) => {
+  const { events, totalCount } = await generateEvents(city, page);
+
+  const previousPath = page > 1 ? `/events/${city}?page=${page - 1}` : ""; // if page > 1 else we are showing empty str
+  const nextPath =
+    totalCount > page * 6 ? `/events/${city}?page=${page + 1}` : "";
+
   return (
-    <section className="flex flex-wrap justify-center gap-10 px-10 max-w-[1210px] py-10">
-      {events.map((event) => (
-        <EventCard event={event} />
-      ))}
-    </section>
+    <div className="px-10">
+      <section className="flex flex-wrap justify-center gap-10  max-w-[1210px] py-10">
+        {events.map((event) => (
+          <EventCard event={event} />
+        ))}
+      </section>
+
+      <PaginationControls nextPath={nextPath} previousPath={previousPath} />
+    </div>
   );
 };
 
