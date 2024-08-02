@@ -1,4 +1,5 @@
-import { generateEvent, sleep } from "@/lib/utils";
+import { generateEvent } from "@/lib/server-utils";
+import { sleep } from "@/lib/utils";
 import { EventProps } from "@/types/index.types";
 import { Metadata } from "next";
 import Image from "next/image";

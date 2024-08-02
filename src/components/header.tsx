@@ -17,8 +17,8 @@ const Header = () => {
       <LogoLink />
       <nav className=" h-full">
         <ul className="flex h-full gap-4 items-center">
-          {routes.map((route) => (
-            <li className="relative bottom-0 h-full flex items-center">
+          {routes.map((route, i) => (
+            <li className="relative bottom-0 h-full flex items-center" key={i}>
               <Link
                 key={route.path}
                 href={route.path}
@@ -30,8 +30,11 @@ const Header = () => {
                 {route.name}
               </Link>
               {activeRoute === route.path && (
-                <motion.span layoutId="header-active-link" className="w-full absolute h-1 bottom-0 left-0 bg-accent" />
-              )} 
+                <motion.span
+                  layoutId="header-active-link"
+                  className="w-full absolute h-1 bottom-0 left-0 bg-accent"
+                />
+              )}
             </li>
           ))}
         </ul>

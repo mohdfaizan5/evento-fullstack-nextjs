@@ -20,6 +20,17 @@ export const generateMetadata = async ({ params }: Props) => {
   };
 };
 
+export async function generateStaticParams() {
+  return [
+    {
+      city: "react-meetup-bangalore",
+    },
+    {
+      city: "science-space-expo",
+    },
+  ];
+}
+
 const pageNumberSchema = z.coerce.number().int().positive().optional();
 
 const page = async ({ params, searchParams }: EventsPageProps) => {
@@ -29,7 +40,7 @@ const page = async ({ params, searchParams }: EventsPageProps) => {
   if (!parsedPage.success) throw new Error("Invalid page number");
 
   const page = parsedPage.data || 1;
-  console.log("Page query params", page);
+  // console.log("Page query params", page);
 
   return (
     <main className="flex flex-col items-center  min-h-dvh">

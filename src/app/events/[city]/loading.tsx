@@ -15,11 +15,10 @@ const Loading = () => {
 
 export default Loading;
 
-const SkeletonCard = ({ key }: { key: string | number }) => {
+const SkeletonCard = () => {
   return (
     <div
       className="flex flex-col w-60 items-center justify-center gap-2"
-      key={key}
     >
       <Skeleton className="h-52" />
       <Skeleton className="h-10" />
